@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,7 @@ namespace ListaTareasDavidAlvarez.MVVM.VistaModelo
 
         private void AgregarTarea()
         {
+            Debug.WriteLine("AgregarTarea ejecutado");
             ListaTareas.Add(new Tarea { Nombre = "Nueva Tarea", Completada = false });
         }
 

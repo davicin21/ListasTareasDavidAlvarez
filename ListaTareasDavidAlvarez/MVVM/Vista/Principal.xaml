@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListaTareasDavidAlvarez.MVVM.Vista.Principal"
              Title="Principal">
-    <StackLayout Padding="10">
+    <StackLayout Padding="20" Spacing="15">
         <ListView ItemsSource="{Binding ListaTareas}" 
                   SelectedItem="{Binding TareaSeleccionada}" 
                   ItemTapped="OnItemTapped">

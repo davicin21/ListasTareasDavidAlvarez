@@ -2,11 +2,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListaTareasDavidAlvarez.MVVM.Vista.DetallesTareas"
-             Title="DetallesTareas">
-    <StackLayout Padding="10">
-        <Entry Text="{Binding Nombre}" Placeholder="Nombre de la tarea" />
-        <Button Text="Eliminar Tarea" Command="{Binding EliminarTareaCommand}" CommandParameter="{Binding TareaSeleccionada}" />
-        <Button Text="Volver" Clicked="OnBackButtonClicked" />
-        <Button Text="Guardar" Clicked="OnSaveClicked" />
-    </StackLayout>
+             Title="Detalles de la Tarea"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Label Text="Editar Tarea"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalOptions="Center"
+               TextColor="{StaticResource PrimaryTextColor}" />
+
+        <Frame BorderColor="{StaticResource AccentColor}" CornerRadius="10" Padding="10">
+            <Entry Text="{Binding Nombre}" 
+                   Placeholder="Nombre de la tarea"
+                   FontSize="16"
+                   TextColor="{StaticResource PrimaryTextColor}" 
+                   BackgroundColor="{StaticResource ListBackgroundColor}" />
+        </Frame>
+
+        <HorizontalStackLayout Spacing="10">
+            <Button Text="Eliminar" 
+                    Command="{Binding EliminarTareaCommand}" 
+                    CommandParameter="{Binding TareaSeleccionada}" 
+                    BackgroundColor="Red" 
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand" />
+            <Button Text="Guardar" 
+                    Clicked="OnSaveClicked" 
+                    BackgroundColor="{StaticResource AccentColor}" 
+                    TextColor="White" 
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand" />
+        </HorizontalStackLayout>
+
+        <Button Text="Volver"
+                Clicked="OnBackButtonClicked"
+                BackgroundColor="{StaticResource SecondaryTextColor}"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="10" 
+                HorizontalOptions="Center" />
+    </VerticalStackLayout>
 </ContentPage>
