@@ -1,6 +1,3 @@
-
-
-
 using ListaTareasDavidAlvarez.MVVM.Modelo;
 using ListaTareasDavidAlvarez.MVVM.VistaModelo;
 
@@ -19,7 +16,7 @@ public partial class Principal : ContentPage
     {
         if (e.Item is Tarea tareaSeleccionada)
         {
-            await Navigation.PushAsync(new DetallesTareas( tareaSeleccionada));
+            await Navigation.PushAsync(new DetallesTareas(_viewModel, tareaSeleccionada));
         }
     }
 }

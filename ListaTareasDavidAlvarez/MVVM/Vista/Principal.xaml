@@ -2,22 +2,49 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListaTareasDavidAlvarez.MVVM.Vista.Principal"
-             Title="Principal">
-    <StackLayout Padding="10">
-        <ListView ItemsSource="{Binding ListaTareas}" 
-                  SelectedItem="{Binding TareaSeleccionada}" 
-                  ItemTapped="OnItemTapped">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="5">
-                            <CheckBox IsChecked="{Binding Completada}" />
-                            <Label Text="{Binding Nombre}" VerticalOptions="Center" />
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button Text="Agregar Tarea" Command="{Binding AgregarTareaCommand}" />
-    </StackLayout>
+             xmlns:vm="clr-namespace:ListaTareasDavidAlvarez.MVVM.VistaModelo"
+             Title="Lista de tareas">
+    <ContentPage.BindingContext>
+        <vm:MainViewModel/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout Padding="20">
+    <Label Text="Mis tareas"
+           FontSize="24"
+           FontAttributes="Bold"
+           HorizontalOptions="Center"
+           TextColor="#333"/>
+    <ListView ItemsSource="{Binding ListaTareas}" 
+              SelectedItem="{Binding TareaSeleccionada}" 
+              Margin="0,20,0,0"
+              ItemTapped="OnItemTapped">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell >
+                    <HorizontalStackLayout>
+                        <CheckBox IsChecked="{Binding Completada}" />
+                        <Label Text="{Binding Nombre}" FontSize="18" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+        <Button Text="Agregar Tarea" 
+                Command="{Binding AgregarTareaCommand}" 
+                BackgroundColor="#007AFF"
+                TextColor="White"
+                FontSize="18"
+                CornerRadius="10"
+                Margin="0,20,0,0"
+                HeightRequest="50"/>
+        <Button Text="Eliminar Tarea" 
+                Command="{Binding EliminarTareaCommand}" 
+                CommandParameter="{Binding TareaSeleccionada}"
+                BackgroundColor="Red"
+                TextColor="White"
+                FontSize="18"
+                CornerRadius="10"
+                Margin="0,20,0,0"
+                HeightRequest="50"/>
+</VerticalStackLayout>
 </ContentPage>

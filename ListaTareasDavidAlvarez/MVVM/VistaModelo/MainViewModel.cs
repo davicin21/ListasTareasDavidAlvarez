@@ -1,4 +1,5 @@
 ﻿using ListaTareasDavidAlvarez.MVVM.Modelo;
+using PropertyChanged;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +11,7 @@ using System.Windows.Input;
 
 namespace ListaTareasDavidAlvarez.MVVM.VistaModelo
 {
+    [AddINotifyPropertyChangedInterface]
     public class MainViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Tarea> ListaTareas { get; set; } = new ObservableCollection<Tarea>();
@@ -49,6 +51,11 @@ namespace ListaTareasDavidAlvarez.MVVM.VistaModelo
         protected void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public void Refresh()
+        {
+            OnPropertyChanged(nameof(ListaTareas));
         }
     }
 }

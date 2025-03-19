@@ -6,16 +6,18 @@ namespace ListaTareasDavidAlvarez.MVVM.Vista;
 
 public partial class DetallesTareas : ContentPage
 {
-    private Tarea tareaOriginal; 
+    private readonly MainViewModel _viewModel;
+    private readonly Tarea _tarea;
     private Tarea tareaTemporal;
-    public DetallesTareas(Tarea tareaSeleccionada)
+    public DetallesTareas(MainViewModel viewModel, Tarea tarea)
     {
         InitializeComponent();
-        tareaOriginal = tareaSeleccionada;
+        _viewModel = viewModel;
+        _tarea = tarea;
         tareaTemporal = new Tarea
         {
-            Nombre = tareaSeleccionada.Nombre,
-            Completada = tareaSeleccionada.Completada
+            Nombre = tarea.Nombre,
+            Completada = tarea.Completada
         };
         BindingContext = tareaTemporal;
     }
@@ -26,11 +28,10 @@ public partial class DetallesTareas : ContentPage
     }
     private async void OnSaveClicked(object sender, EventArgs e)
     {
-        tareaOriginal.Nombre = tareaTemporal.Nombre;
-        tareaOriginal.Completada = tareaTemporal.Completada;
+        _tarea.Nombre= tareaTemporal.Nombre;
+        _tarea.Completada= tareaTemporal.Completada;
+
+        _viewModel.Refresh();
         await Navigation.PopAsync();
     }
-
-
-
 }
