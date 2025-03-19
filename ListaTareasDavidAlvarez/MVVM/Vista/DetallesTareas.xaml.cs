@@ -1,6 +1,7 @@
 
 using ListaTareasDavidAlvarez.MVVM.Modelo;
 using ListaTareasDavidAlvarez.MVVM.VistaModelo;
+using System.Collections.ObjectModel;
 
 namespace ListaTareasDavidAlvarez.MVVM.Vista;
 
@@ -20,6 +21,8 @@ public partial class DetallesTareas : ContentPage
             Completada = tarea.Completada
         };
         BindingContext = tareaTemporal;
+        
+        
     }
 
     private async void OnBackButtonClicked(object sender, EventArgs e)
